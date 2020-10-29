@@ -1,0 +1,4 @@
+pylint
+flake8
+autopep8
+wemake-python-styleguide
