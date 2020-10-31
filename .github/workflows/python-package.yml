@@ -38,6 +38,13 @@ jobs:
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=79 --statistics
+    - name: Check with wemake-python-styleguide
+      uses: wemake-services/wemake-python-styleguide@0.14.1
+      continue-on-error: true
+      with:
+        reporter: 'github-pr-review'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Test with pytest
       run: |
         make lwip_lib
